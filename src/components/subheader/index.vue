@@ -3,6 +3,7 @@
     <div v-for="item in sub_item" class="sub-header-wrap">
       <sub-header
         :sub_data="item.sub_header"
+        :item="item"
         @openRegister="openRegister"
       />
       <div class="sub-item-wrap">
@@ -51,7 +52,8 @@
                 title: '品牌曝光',
                 desc: `<p>全媒体平台资源提升品牌曝光度</p>`
               }
-            ]
+            ],
+            type:1
           },
           {
             sub_header: {
@@ -81,7 +83,8 @@
                 title: '安心售后',
                 desc: `<p>7x16小时专业售后在线<br>免除后顾之忧<br>库存充足24小时发货</p>`
               }
-            ]
+            ],
+            type:2
           }
         ]
       }
@@ -91,8 +94,8 @@
       SubItem,
     },
     methods: {
-      openRegister () {
-        this.$emit('openRegister')
+      openRegister (type) {
+        this.$emit('openRegister',type)
       }
     }
   }

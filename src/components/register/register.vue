@@ -1,77 +1,101 @@
 <template>
   <transition name="modal">
     <div class="register-wrap">
-      <div class="register-body">
-        <div class="register-header">
-          <div class="t1">申请成为</div>
-          <div class="t2">极果优品供应商</div>
-        </div>
-        <div class="register-input-box">
-          <div class="register-input-body">
-            <div class="register-item-wrap">
-              <div class="register-item-text">产品名称：</div>
-              <div class="register-item-input">
-                <input type="text" name=""/>
-              </div>
-            </div>
-
-            <div class="register-item-wrap">
-              <div class="register-item-text">产品特点：</div>
-              <div class="register-item-input">
-                <textarea name=""></textarea>
-              </div>
-            </div>
-
-            <div class="register-item-wrap">
-              <div class="register-item-text">厂商全称：</div>
-              <div class="register-item-input">
-                <input type="text" name=""/>
-              </div>
-            </div>
-
-            <div class="register-item-wrap">
-              <div class="register-item-text">官方网站：</div>
-              <div class="register-item-input">
-                <input type="text" name=""/>
-              </div>
-            </div>
-
-            <div class="register-item-wrap">
-              <div class="register-item-text">电商网址：</div>
-              <div class="register-item-input">
-                <input type="text" name=""/>
-              </div>
-            </div>
-
-            <div class="register-item-wrap">
-              <div class="register-item-text"><span class="g2">*</span>联系人：</div>
-              <div class="register-item-input">
-                <input type="text" name=""/>
-              </div>
-            </div>
-
-            <div class="register-item-wrap">
-              <div class="register-item-text"><span class="g2">*</span>手机号：</div>
-              <div class="register-item-input">
-                <input type="text" name=""/>
-              </div>
-            </div>
-
-            <div class="register-item-wrap">
-              <div class="register-item-text"><span class="g2">*</span>微信号：</div>
-              <div class="register-item-input">
-                <input type="text" name=""/>
-              </div>
-            </div>
+      <div style="width: 100%">
+        <div class="register-body">
+          <div class="register-header">
+            <div class="t1">申请成为</div>
+            <div class="t2">极果优品供应商</div>
           </div>
+          <div class="register-input-box">
+            <div class="register-input-body">
+              <template v-if="type==1">
+                <div class="register-item-wrap">
+                  <div class="register-item-text">产品名称：</div>
+                  <div class="register-item-input">
+                    <input type="text" name=""/>
+                  </div>
+                </div>
 
-          <div class="register-item-wrap">
-            <div class="register-item-text"></div>
-            <div class="register-submit-wrap">
-              <button type="button" >提交</button>
+                <div class="register-item-wrap">
+                  <div class="register-item-text">产品特点：</div>
+                  <div class="register-item-input">
+                    <textarea name=""></textarea>
+                  </div>
+                </div>
+
+                <div class="register-item-wrap">
+                  <div class="register-item-text">厂商全称：</div>
+                  <div class="register-item-input">
+                    <input type="text" name=""/>
+                  </div>
+                </div>
+
+                <div class="register-item-wrap">
+                  <div class="register-item-text">官方网站：</div>
+                  <div class="register-item-input">
+                    <input type="text" name=""/>
+                  </div>
+                </div>
+
+                <div class="register-item-wrap">
+                  <div class="register-item-text">电商网址：</div>
+                  <div class="register-item-input">
+                    <input type="text" name=""/>
+                  </div>
+                </div>
+              </template>
+              <template v-else-if="type==2">
+                <div class="register-item-wrap">
+                  <div class="register-item-text">渠道性质：</div>
+                  <div class="register-item-input">
+                    <input type="text" name=""/>
+                  </div>
+                </div>
+                <div class="register-item-wrap">
+                  <div class="register-item-text"><span class="g2">*</span>渠道名称：</div>
+                  <div class="register-item-input">
+                    <input type="text" name=""/>
+                  </div>
+                </div>
+                <div class="register-item-wrap">
+                  <div class="register-item-text">渠道特点：</div>
+                  <div class="register-item-input">
+                    <textarea name=""></textarea>
+                  </div>
+                </div>
+              </template>
+
+              <div class="register-item-wrap">
+                <div class="register-item-text"><span class="g2">*</span>联系人：</div>
+                <div class="register-item-input">
+                  <input type="text" name=""/>
+                </div>
+              </div>
+
+              <div class="register-item-wrap">
+                <div class="register-item-text"><span class="g2">*</span>手机号：</div>
+                <div class="register-item-input">
+                  <input type="text" name=""/>
+                </div>
+              </div>
+
+              <div class="register-item-wrap">
+                <div class="register-item-text"><span class="g2">*</span>微信号：</div>
+                <div class="register-item-input">
+                  <input type="text" name=""/>
+                </div>
+              </div>
             </div>
-          </div>
 
+            <div class="register-item-wrap">
+              <div class="register-item-text"></div>
+              <div class="register-submit-wrap" :class="{on}" @click="submitData">
+                <button type="button">提交</button>
+              </div>
+            </div>
+
+          </div>
         </div>
         <div class="register-close" @click="close">
           <img src="../../style/images/close.svg"/>
@@ -84,13 +108,35 @@
 <script>
   export default {
     name: 'register',
+    props:{
+      type:{
+        type:Number,
+        default:1
+      }
+    },
     data () {
       return {
+        on:false
       }
+    },
+    created(){
+      console.log('created')
+    },
+    beforeUpdate(){
+      console.log('updateBefore')
+    },
+    updated(){
+      console.log('updated')
+    },
+    activated(){
+      console.log('activated')
     },
     methods: {
       close () {
         this.$emit('close')
+      },
+      submitData(){
+
       }
     }
   }
@@ -112,6 +158,7 @@
     bottom: 0;
     z-index: 9;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     transition: all .3s ease;
@@ -156,10 +203,11 @@
       font-weight: 500;
       display: flex;
       flex-direction: row;
-      justify-content: space-between;
+      justify-content: flex-end;
       align-content: center;
       align-items: center;
-      width: 120px;
+      width: 135px;
+      text-align: right;
       .g2 {
         color: #F66039;
       }
@@ -182,8 +230,9 @@
       }
     }
     .register-submit-wrap {
+      user-select: none;
       background-color: #E7DFCC;
-      &.on{
+      &.on {
         background-color: #F66039;
       }
       button[type=button] {
@@ -205,9 +254,9 @@
     height: 80px;
     border-radius: 50%;
     overflow: hidden;
-    position: absolute;
-    left: 50%;
-    transform: translateY(30px) translateX(-50%);
+    position: relative;
+    margin: 10px auto auto;
+    /*transform: translateY(30px) translateX(-50%);*/
     display: flex;
     justify-content: center;
     align-items: center;

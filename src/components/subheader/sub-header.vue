@@ -11,7 +11,7 @@
     </div>
     <div class="sub-header-desc" v-if="sub_data.sub_desc">{{sub_data.sub_desc}}</div>
     <div class="sub-header-button" v-if="button">
-      <button @click="openRegister">点击申请</button>
+      <button @click="openRegister(item)">点击申请</button>
     </div>
   </div>
 </template>
@@ -26,6 +26,12 @@
       button:{
         type:Boolean,
         default:true
+      },
+      item:{
+        type:Object,
+        default:function () {
+          return {};
+        }
       }
     },
     data () {
@@ -33,7 +39,7 @@
     },
     methods: {
       openRegister(){
-        this.$emit('openRegister');
+        this.$emit('openRegister',this.item.type);
       }
     }
   }

@@ -1,7 +1,12 @@
 <template>
   <div>
     <header-bg/>
-    <register v-show="show_register" @close="closeRegister" class="register"/>
+    <register
+      v-show="show_register"
+      @close="closeRegister"
+      :type="type"
+      class="register"
+    />
     <sub-header @openRegister="openRegister"/>
     <div class="classic-case">
       <div style="margin-bottom: 50px">
@@ -26,6 +31,7 @@
   export default {
     data () {
       return {
+        type:1,
         show_register: false,
         has_sub_item: {
           sub_logo: 'icon-11.png',
@@ -43,11 +49,12 @@
       CenterItem
     },
     methods: {
-      openRegister () {
+      openRegister (type) {
         this.show_register = true;
         ['mousewheel','DOMMouseScroll','touchmove'].forEach((item)=>{
           window.addEventListener(item,this._preventDefault, {passive: false });
         });
+        this.type = type || this.type;
       },
       closeRegister () {
         this.show_register = false;

@@ -1,7 +1,7 @@
 <template>
   <transition name="modal">
     <div class="register-wrap">
-      <div style="width: 100%">
+      <div style="width: 100%;margin-top: 90px;">
         <div class="register-body">
           <div class="register-header">
             <div class="t1">申请成为</div>
@@ -144,6 +144,9 @@
       $('.register-wrap').on('keyup change blur focus', 'input,textarea', function (e) {
         if(e.type=='focus'){
           $(window).scrollTop( $(this).offset().top - 10 );
+          setTimeout(function () {
+            alert('scs')
+          });
         }
         _this.timer && clearTimeout( _this.timer );
         _this.timer = setTimeout(()=>{
@@ -276,10 +279,10 @@
     right: 0;
     bottom: 0;
     z-index: 9;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    /*align-items: center;*/
+    /*justify-content: center;*/
     transition: all .3s ease;
     .register-body {
       width: 100%;

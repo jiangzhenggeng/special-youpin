@@ -141,7 +141,10 @@
     mounted () {
       var formFunction = this.getFormFunction()
       var _this = this
-      $('.register-wrap').on('keyup change blur focus', 'input,textarea', function () {
+      $('.register-wrap').on('keyup change blur focus', 'input,textarea', function (e) {
+        if(e.type=='focus'){
+          $(window).scrollTop( $(this).offset().top - 10 );
+        }
         _this.timer && clearTimeout( _this.timer );
         _this.timer = setTimeout(()=>{
           if ($(this).attr('name')) {

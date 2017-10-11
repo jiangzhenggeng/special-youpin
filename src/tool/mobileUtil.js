@@ -62,10 +62,10 @@ window.mobileUtil = (function (win, doc) {
 				}
 				refreshRem();
 				var tid;
-				win.addEventListener('resize', function () {
-					tid && clearTimeout(tid);
-					tid = setTimeout(refreshRem, 300);
-				}, false);
+				// win.addEventListener('resize', function () {
+				// 	tid && clearTimeout(tid);
+				// 	tid = setTimeout(refreshRem, 300);
+				// }, false);
 				win.addEventListener('pageshow', function (e) {
 					if (e.persisted) {
 						tid && clearTimeout(tid);

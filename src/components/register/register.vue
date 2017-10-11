@@ -142,25 +142,26 @@
       var formFunction = this.getFormFunction()
       var _this = this
       $('.register-wrap').on('keyup change blur focus', 'input,textarea', function (e) {
-        if(e.type=='focus'){
-          $(window).scrollTop( $(this).offset().top - 10 );
-          setTimeout(function () {
+        if (e.originalEvent.type == 'focus') {
+          $(window).scrollTop($(this).offset().top - 10)
+          _this.tr && clearTimeout(_this.tr);
+          _this.tr = setTimeout(function () {
             alert('scs')
-          });
+          },1000)
         }
-        _this.timer && clearTimeout( _this.timer );
-        _this.timer = setTimeout(()=>{
+        _this.timer && clearTimeout(_this.timer)
+        _this.timer = setTimeout(() => {
           if ($(this).attr('name')) {
-            var i = 'v_' + $(this).attr('name');
+            var i = 'v_' + $(this).attr('name')
             if (formFunction[i] && _this.$refs[i] && i.substr(0, 2) == 'v_') {
-              if (! formFunction[i].call(_this, _this.$refs[i]) ) {
+              if (!formFunction[i].call(_this, _this.$refs[i])) {
                 $(_this.$refs[i]).next().show()
               } else {
                 $(_this.$refs[i]).next().hide()
               }
             }
           }
-        },300);
+        }, 300)
       })
     },
     methods: {
@@ -188,14 +189,14 @@
         if (this.verification()) {
           var url = this.type == 1 ? '/api/html/PostSupplier' : '/api/html/PostChannel'
           var formData = $(this.$refs['form-data']).serialize()
-          $.get(url, formData,  (repalyData) => {
-            if( repalyData.resultCode==0){
-              this.$toast('提交成功');
-              this.close();
-            }else{
-              this.$toast('提交失败');
+          $.get(url, formData, (repalyData) => {
+            if (repalyData.resultCode == 0) {
+              this.$toast('提交成功')
+              this.close()
+            } else {
+              this.$toast('提交失败')
             }
-          }, 'json');
+          }, 'json')
         }
       },
       getFormFunction () {

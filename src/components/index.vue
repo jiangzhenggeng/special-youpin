@@ -51,16 +51,16 @@
     methods: {
       openRegister (type) {
         this.show_register = true;
-        ['mousewheel','DOMMouseScroll','touchmove'].forEach((item)=>{
-          window.addEventListener(item,this._preventDefault, {passive: false });
-        });
+//        ['mousewheel','DOMMouseScroll','touchmove'].forEach((item)=>{
+//          window.addEventListener(item,this._preventDefault, {passive: false });
+//        });
         this.type = type || this.type;
       },
       closeRegister () {
         this.show_register = false;
-        ['mousewheel','DOMMouseScroll','touchmove'].forEach((item)=>{
-          window.removeEventListener(item,this._preventDefault);
-        });
+//        ['mousewheel','DOMMouseScroll','touchmove'].forEach((item)=>{
+//          window.removeEventListener(item,this._preventDefault);
+//        });
       },
       _preventDefault(e){
         e.preventDefault();

@@ -140,14 +140,14 @@
     },
     mounted () {
       var formFunction = this.getFormFunction()
-      var _this = this
-      $('.register-wrap').on('keyup change blur focus', 'input,textarea', function (e) {
+      var _this = this;
+      var registerBox = $('.register-wrap');
+      registerBox.on('keyup change blur focus', 'input,textarea', function (e) {
         if (e.originalEvent.type == 'focus') {
-          $(window).scrollTop($(this).offset().top - 10)
-          _this.tr && clearTimeout(_this.tr);
-          _this.tr = setTimeout(function () {
-            alert('scs')
-          },1000)
+          var offsetTop = $(this).offset().top - registerBox.find('>div').first().offset().top - 30;
+          if( offsetTop>0 ){
+            registerBox.scrollTop( offsetTop )
+          }
         }
         _this.timer && clearTimeout(_this.timer)
         _this.timer = setTimeout(() => {
@@ -285,6 +285,8 @@
     /*align-items: center;*/
     /*justify-content: center;*/
     transition: all .3s ease;
+    overflow-y: scroll;
+
     .register-body {
       width: 100%;
       background: #FCF9F2;

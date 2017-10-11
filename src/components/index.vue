@@ -2,7 +2,7 @@
   <div>
     <header-bg/>
     <register
-      v-show="show_register"
+      v-if="show_register"
       @close="closeRegister"
       :type="type"
       class="register"

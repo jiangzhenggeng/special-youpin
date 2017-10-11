@@ -8,6 +8,14 @@ import Loading from './components/loading'
 Vue.config.productionTip = false
 Vue.use(Loading)
 
+import {Alert, Confirm, Prompt, Toast} from 'wc-messagebox'
+import './style/less/wc-messagebox.less'
+
+Vue.use(Alert)
+Vue.use(Confirm)
+Vue.use(Prompt)
+Vue.use(Toast)
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

@@ -9,83 +9,95 @@
           </div>
           <div class="register-input-box">
             <div class="register-input-body">
-              <template v-if="type==1">
+              <form ref="form-data">
+                <template v-if="type==1">
+                  <div class="register-item-wrap">
+                    <div class="register-item-text">产品名称：</div>
+                    <div class="register-item-input">
+                      <input type="text" ref="v_pname" name="pname"/>
+                      <div class="error-msg">填写产品名称</div>
+                    </div>
+                  </div>
+
+                  <div class="register-item-wrap">
+                    <div class="register-item-text">产品特点：</div>
+                    <div class="register-item-input">
+                      <textarea ref="v_feature" name="feature"></textarea>
+                      <div class="error-msg">填写产品特点</div>
+                    </div>
+                  </div>
+
+                  <div class="register-item-wrap">
+                    <div class="register-item-text">厂商全称：</div>
+                    <div class="register-item-input">
+                      <input ref="v_factory_name" type="text" name="factory_name"/>
+                      <div class="error-msg">填写厂商全称</div>
+                    </div>
+                  </div>
+
+                  <div class="register-item-wrap">
+                    <div class="register-item-text">官方网站：</div>
+                    <div class="register-item-input">
+                      <input ref="v_url" type="text" name="url"/>
+                      <div class="error-msg">填写官方网站</div>
+                    </div>
+                  </div>
+
+                  <div class="register-item-wrap">
+                    <div class="register-item-text">电商网址：</div>
+                    <div class="register-item-input">
+                      <input ref="v_shop_url" type="text" name="shop_url"/>
+                      <div class="error-msg">填写电商网址</div>
+                    </div>
+                  </div>
+                </template>
+                <template v-else-if="type==2">
+                  <div class="register-item-wrap">
+                    <div class="register-item-text">渠道性质：</div>
+                    <div class="register-item-input radio">
+                      <label><input type="radio" name="type" value="1" checked/>个人</label>
+                      <label><input type="radio" name="type" value="2"/>公司</label>
+                    </div>
+                  </div>
+                  <div class="register-item-wrap">
+                    <div class="register-item-text"><span class="g2">*</span>渠道名称：</div>
+                    <div class="register-item-input">
+                      <input ref="v_name" type="text" name="name"/>
+                      <div class="error-msg">填写渠道名称</div>
+                    </div>
+                  </div>
+                  <div class="register-item-wrap">
+                    <div class="register-item-text">渠道特点：</div>
+                    <div class="register-item-input">
+                      <textarea ref="v_feature" name="feature"></textarea>
+                    </div>
+                  </div>
+                </template>
+
                 <div class="register-item-wrap">
-                  <div class="register-item-text">产品名称：</div>
+                  <div class="register-item-text"><span class="g2">*</span>联系人：</div>
                   <div class="register-item-input">
-                    <input type="text" name=""/>
+                    <input ref="v_username" type="text" name="username"/>
+                    <div class="error-msg">填写联系人</div>
                   </div>
                 </div>
 
                 <div class="register-item-wrap">
-                  <div class="register-item-text">产品特点：</div>
+                  <div class="register-item-text"><span class="g2">*</span>手机号：</div>
                   <div class="register-item-input">
-                    <textarea name=""></textarea>
+                    <input ref="v_tel" type="text" name="tel"/>
+                    <div class="error-msg">填写手机号</div>
                   </div>
                 </div>
 
                 <div class="register-item-wrap">
-                  <div class="register-item-text">厂商全称：</div>
+                  <div class="register-item-text"><span class="g2">*</span>微信号：</div>
                   <div class="register-item-input">
-                    <input type="text" name=""/>
+                    <input ref="v_weixin" type="text" name="weixin"/>
+                    <div class="error-msg">填写微信号</div>
                   </div>
                 </div>
-
-                <div class="register-item-wrap">
-                  <div class="register-item-text">官方网站：</div>
-                  <div class="register-item-input">
-                    <input type="text" name=""/>
-                  </div>
-                </div>
-
-                <div class="register-item-wrap">
-                  <div class="register-item-text">电商网址：</div>
-                  <div class="register-item-input">
-                    <input type="text" name=""/>
-                  </div>
-                </div>
-              </template>
-              <template v-else-if="type==2">
-                <div class="register-item-wrap">
-                  <div class="register-item-text">渠道性质：</div>
-                  <div class="register-item-input">
-                    <input type="text" name=""/>
-                  </div>
-                </div>
-                <div class="register-item-wrap">
-                  <div class="register-item-text"><span class="g2">*</span>渠道名称：</div>
-                  <div class="register-item-input">
-                    <input type="text" name=""/>
-                  </div>
-                </div>
-                <div class="register-item-wrap">
-                  <div class="register-item-text">渠道特点：</div>
-                  <div class="register-item-input">
-                    <textarea name=""></textarea>
-                  </div>
-                </div>
-              </template>
-
-              <div class="register-item-wrap">
-                <div class="register-item-text"><span class="g2">*</span>联系人：</div>
-                <div class="register-item-input">
-                  <input type="text" name=""/>
-                </div>
-              </div>
-
-              <div class="register-item-wrap">
-                <div class="register-item-text"><span class="g2">*</span>手机号：</div>
-                <div class="register-item-input">
-                  <input type="text" name=""/>
-                </div>
-              </div>
-
-              <div class="register-item-wrap">
-                <div class="register-item-text"><span class="g2">*</span>微信号：</div>
-                <div class="register-item-input">
-                  <input type="text" name=""/>
-                </div>
-              </div>
+              </form>
             </div>
 
             <div class="register-item-wrap">
@@ -106,37 +118,137 @@
 </template>
 
 <script>
+  import $ from 'jquery'
+
   export default {
     name: 'register',
-    props:{
-      type:{
-        type:Number,
-        default:1
+    props: {
+      type: {
+        type: Number,
+        default: 1
       }
     },
     data () {
       return {
-        on:false
+        on: false
       }
     },
-    created(){
-      console.log('created')
+    watch: {
+      type () {
+        $('.error-msg').hide()
+      }
     },
-    beforeUpdate(){
-      console.log('updateBefore')
-    },
-    updated(){
-      console.log('updated')
-    },
-    activated(){
-      console.log('activated')
+    mounted () {
+      var formFunction = this.getFormFunction()
+      var _this = this
+      $('.register-wrap').on('keyup change blur focus', 'input,textarea', function () {
+        _this.timer && clearTimeout( _this.timer );
+        _this.timer = setTimeout(()=>{
+          if ($(this).attr('name')) {
+            var i = 'v_' + $(this).attr('name');
+            if (formFunction[i] && _this.$refs[i] && i.substr(0, 2) == 'v_') {
+              if (! formFunction[i].call(_this, _this.$refs[i]) ) {
+                $(_this.$refs[i]).next().show()
+              } else {
+                $(_this.$refs[i]).next().hide()
+              }
+            }
+          }
+        },300);
+      })
     },
     methods: {
       close () {
         this.$emit('close')
       },
-      submitData(){
-
+      verification () {
+        var result
+        var formFunction = this.getFormFunction()
+        var validataResult = true
+        for (var i in this.$refs) {
+          if (formFunction[i] && this.$refs[i] && i.substr(0, 2) == 'v_') {
+            result = formFunction[i].call(this, this.$refs[i])
+            if (!result) {
+              $(this.$refs[i]).next().show()
+              validataResult = false
+            } else {
+              $(this.$refs[i]).next().hide()
+            }
+          }
+        }
+        return validataResult
+      },
+      submitData () {
+        if (this.verification()) {
+          var url = this.type == 1 ? '/api/html/PostSupplier' : '/api/html/PostChannel'
+          var formData = $(this.$refs['form-data']).serialize()
+          $.get(url, formData,  (repalyData) => {
+            if( repalyData.resultCode==0){
+              this.$toast('提交成功');
+              this.close();
+            }else{
+              this.$toast('提交失败');
+            }
+          }, 'json');
+        }
+      },
+      getFormFunction () {
+        return {
+          v_pname: function ($ref) {
+            if ($($ref).val().replace(/^\s+|\s+$/g, '') == '') {
+              return false
+            }
+            return true
+          },
+          v_feature: function ($ref) {
+            if ($($ref).val().replace(/^\s+|\s+$/g, '') == '') {
+              return false
+            }
+            return true
+          },
+          v_factory_name: function ($ref) {
+            if ($($ref).val().replace(/^\s+|\s+$/g, '') == '') {
+              return false
+            }
+            return true
+          },
+          v_url: function ($ref) {
+            if (!/^https?\:\/\/.+/.test($($ref).val())) {
+              return false
+            }
+            return true
+          },
+          v_shop_url: function ($ref) {
+            if (!/^https?\:\/\/.+/.test($($ref).val())) {
+              return false
+            }
+            return true
+          },
+          v_name: function ($ref) {
+            if ($($ref).val().replace(/^\s+|\s+$/g, '') == '') {
+              return false
+            }
+            return true
+          },
+          v_username: function ($ref) {
+            if ($($ref).val().replace(/^\s+|\s+$/g, '').length < 2) {
+              return false
+            }
+            return true
+          },
+          v_tel: function ($ref) {
+            if (!/^1\d{10}$/.test($($ref).val())) {
+              return false
+            }
+            return true
+          },
+          v_weixin: function ($ref) {
+            if (!/^[\d\w\-]+$/.test($($ref).val())) {
+              return false
+            }
+            return true
+          }
+        }
       }
     }
   }
@@ -146,6 +258,10 @@
   input, textarea, button {
     appearance: none;
     resize: none;
+  }
+
+  input:-webkit-autofill {
+    box-shadow: inset 0 0 0 1000px #E7DFCC;
   }
 
   .register-wrap {
@@ -216,6 +332,7 @@
       background-color: #E7DFCC;
       flex: 1;
       padding: 12px 20px;
+      position: relative;
       input, textarea {
         outline: none;
         border: none;
@@ -227,6 +344,14 @@
       }
       textarea {
         height: 150px;
+      }
+      &.radio {
+        background: transparent;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        padding-left: 0;
       }
     }
     .register-submit-wrap {
@@ -277,5 +402,47 @@
   .modal-leave-active {
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
+  }
+
+  .radio {
+    label {
+      position: relative;
+      display: block;
+      overflow: hidden;
+      padding-left: 40px;
+      margin-right: 10px;
+    }
+    input[type=radio] {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+
+      &:after {
+        content: '';
+        display: block;
+        width: 30px;
+        height: 30px;
+        background: #E7DFCC;
+        border-radius: 7px;
+      }
+
+      &:checked:after {
+        background-image: url(../../style/images/icon-radio.svg);
+        background-position: center center;
+        background-size: 16px auto;
+        background-repeat: no-repeat;
+      }
+    }
+  }
+
+  .error-msg {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #F66039;
+    font-size: 24px;
+    display: none;
   }
 </style>
